@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>rups.io Play</title>
+    <link rel="stylesheet" href="/src/style.css" />
+    <!-- Importing Retro Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="playButton" class="circle-button">
+        =^.^=
+    </div>
+    <div id="container"></div>
+    <div id="glowText">rups.io</div>
+
+    <script type="module" src="/src/main.js"></script>
+    <script type="module">
+        // Play button click functionality
+        const playButton = document.getElementById('playButton');
+        const container = document.getElementById('container');
+        const glowText = document.getElementById('glowText');
+        
+        // Show Play Button initially
+        playButton.style.display = 'block';
+        container.style.display = 'none';
+        glowText.style.display = 'none';
+        
+        // Background music
+        const audio = new Audio('/fp_ablaze.mp3');
+        audio.loop = true;
+        audio.volume = 0.6;
+
+        // Additional click sound
+        const clickSound = new Audio('/meow.mp3');  // Ensure this file is available
+        clickSound.volume = 1;
+
+        // Play audio and switch to starfield on click
+        playButton.addEventListener('click', () => {
+            // Play click sound only once on play button click
+            clickSound.play().catch(err => console.log('Click sound playback failed:', err));
+
+            // Play background music
+            audio.play().catch(err => {
+                console.log('Audio playback failed:', err);
+            });
+
+            // Hide play button, show the scene
+            playButton.style.display = 'none';
+            container.style.display = 'block';
+            glowText.style.display = 'block';
+        });
+    </script>
+</body>
+</html>
