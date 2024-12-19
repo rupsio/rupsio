@@ -1,13 +1,5 @@
 import * as THREE from 'three';
 
-// --- Background Audio ---
-const audio = new Audio('/fp_ablaze.mp3'); // Path to your audio file in public
-audio.loop = true;  // Loop the audio
-audio.volume = 0.2; // Adjust volume (0.0 to 1.0)
-audio.play().catch(err => {
-    console.log('Audio playback failed:', err);
-});
-
 // --- Three.js Scene, Camera, Renderer ---
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
@@ -68,21 +60,21 @@ function animateStars() {
 }
 
 // --- Handle Cursor Movement and Glow Effect ---
-const glowText = document.getElementById('glowText');
+// const glowText = document.getElementById('glowText');
 
-document.addEventListener('mousemove', (e) => {
-    const mouseX = (e.clientX / window.innerWidth) * 2 - 1; // Normalize X
-    const mouseY = -(e.clientY / window.innerHeight) * 2 + 1; // Normalize Y
+// document.addEventListener('mousemove', (e) => {
+//     const mouseX = (e.clientX / window.innerWidth) * 2 - 1; // Normalize X
+//     const mouseY = -(e.clientY / window.innerHeight) * 2 + 1; // Normalize Y
 
-    const glowX = Math.floor(mouseX * 20);
-    const glowY = -Math.floor(mouseY * 20);
+//     const glowX = Math.floor(mouseX * 20);
+//     const glowY = -Math.floor(mouseY * 20);
 
-    glowText.style.textShadow = `
-        ${glowX}px ${glowY}px 20px #b0c4de,
-        ${glowX * 1.2}px ${glowY * 1.2}px 40px #87CEFA,
-        ${glowX * 1.5}px ${glowY * 1.5}px 60px #6495ED
-    `;
-});
+//     glowText.style.textShadow = `
+//         ${glowX}px ${glowY}px 20px #b0c4de,
+//         ${glowX * 1}px ${glowY * 1}px 40px #87CEFA,
+//         ${glowX * 1.2}px ${glowY * 1.2}px 60px #6495ED
+//     `;
+// });
 
 // --- Animation Loop ---
 function animate() {
